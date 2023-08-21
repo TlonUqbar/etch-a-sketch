@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+
+:root{
+  --base-background: rgba(13, 17, 23, 1);
+  --second-background: rgba(19, 23, 33, 1);
+  --third-background: rgba(1, 17, 26, 1);
+  --fourth-background:  rgba(19, 36, 44, 1);  
+  
+  --base-color: rgba(186, 218, 85, 1);
+  --second-color: rgba(226, 162, 79, 1);
+  --third-color: #121010;
+
+  
+
+  --tt: #cdab8f;
+  --classic-color: rgba(30, 41, 59, 1);
+  --classic-canvas: rgba(160, 160, 160, 1);
+  --default-color: rgba(186, 218, 85, 1);
+  --default-canvas: rgba(222, 184, 135, 1);
+  --play-border: rgb(161, 136, 81);
+
+  --border-color: rgba(245, 222, 179, 1);
+  --frame-color: rgba(255, 0, 0, 0.5);
+  --button-color: rgba(100, 10, 10, 1);
+  --button-hover:  rgba(255, 0, 0, 0.5);
+
+  --black: rgba(0,0,0,1);
+  --green: rgba(0, 255, 0, 1);
+  --blue: rgba(0,0,255,1);
+  --brown: rgba(165, 42, 42, 1);
+  --t3: rgba(255, 0, 0, 0.5);
+  --orange-red: rgba(255, 69, 0, 1);
+  --t8: rgba(247, 146, 29, 1);
+  --t9: rgba(11, 84, 11, 1);
+  
+
+  --burlywood: rgba(222, 184, 135, 1);
+  --button-action: rgba(233, 222, 39, 1);  
+}
+
+/* simple reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  min-height: 100dvh;
+  color: var(--base-color);
+  background: var(--base-background);
+}
+
+a:link, a:active, a:visited, a:hover{
+  text-decoration: none;
+}
+
+#outter-container{
+  display: flex;
+  flex-direction:row;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: var(--frame-color);
+  flex-basis: 840px;
+  width:800px;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+}
+
+#title{
+  display: flex;
+  font-family: "Audiowide";
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  line-height: 1.5;
+  flex-basis: 600px;
+}
+
+#inner-container{
+  display: flex;
+  background-color: var(--third-background);
+  justify-content: center;
+  align-items: center;
+  /* margin: 50px 0 100px; */
+  padding: 1px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  /* margin: auto; */
+  /* align-self: flex-end; */
+  flex-basis: 600px;
+  height: fit-content;
+}
+
+#grid-container{
+  display: flex;
+  flex-direction:row;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: var(--fourth-background);
+  flex:auto;
+  width:600px;
+  height: 600px;
+}
+
+.grid-row{
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  justify-content: center;
+  flex:auto;
+  flex-wrap: wrap;
+}
+
+.row-item{
+  display: flex;
+  background-color: var(--play-border);
+  border-top: 1px dotted lightgrey;
+  border-left: 1px dotted lightgrey;
+  /* flex: 1 0 auto; */
+  /* aspect-ratio: 1 / 1; */
+  /* margin: 1px; */
+  flex: 1 0 auto;
+  height: auto;
+}
+
+#controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap:20px;
+  color: var(--wheat);
+  flex-basis: 600px;
+}
+
+#grid-control{
+
+}
+
+#slider{
+
+}
+
+#grid-values{
+
+}
+
+#grid-value{
+
+}
+
+#canvas-controls{
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  gap:10px
+}
+
+#modifiers-container{
+  display: flex;
+  flex-basis: 130px;
+}
+
+#modifiers{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction:column;
+  gap: 5px;
+}
+
+#modes-container{
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 130px;
+}
+
+#modes{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction:column;
+  gap: 3px
+}
+
+.button{
+  background-color: var(--button-color);
+  color: var(--base-color);
+  padding: 4px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--button-color);
+}
+
+.button:hover{
+  background-color: var(--button-hover);
+  color: var(--button-action);
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
+}
+
+.thin, .thin:hover{
+  padding: 0px 8px;
+}
+
+h3{
+  line-height: 1;
+  margin: 0;
+}
