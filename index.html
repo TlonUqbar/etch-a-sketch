@@ -17,70 +17,33 @@
     </div>
     <div id="inner-container">
       <div id="grid-container">
-        <!-- <div class="grid-row">
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-        </div>
-        <div class="grid-row">
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-        </div>
-        <div class="grid-row">
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-        </div>
-        <div class="grid-row">
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-          <div class="row-item"></div>
-        </div> -->
       </div>
-      
     </div>
     <div id="controls">
-      
       <div id="modifiers-container">
-        
         <form id="modifiers">
           <h3>Modifiers</h3>
-          <!-- <fieldset>
-          <legend>Modifiers</legend> -->
           <div>
             <input type="radio" id="none" name="modifier" checked>
             <label for="none">None</label>
           </div>
           <div>
-            
             <input type="radio" id="lighten" name="modifier">
             <label for="lighten">Lighten</label>
           </div>
           <div>
-            
             <input type="radio" id="darken" name="modifier">
             <label for="darken">Darken</label>
           </div>
-        <!-- </fieldset>                       -->
         </form>
       </div>
-
-   
       <div id="canvas-controls">
         <h3>Canvas</h3>
-
         <div id="grid-control">
-
           <div id="slider">
             <label for="slider">Grid size: </label>
               <output id="grid-size">50x50</output><br/>
-            <input id="slider-input" type="range" min="1" max="100" value="50" step="1" list="grid-values" autocomplete="off"> 
-            
+            <input id="slider-input" type="range" min="1" max="100" value="50" step="1" list="grid-values" autocomplete="off">             
             <datalist id="grid-values">
               <option value="1" label="1"></option>
               <option value="24" label="24"></option>
@@ -89,28 +52,24 @@
               <option value="100" label="100"></option>
             </datalist>
           </div>
-
           <div id="gridlines-control">
             <label for="gridlines">Gridlines</label>
             <input type="checkbox" name="gridlines" id="gridlines" checked/>
           </div>
-
-        </div>
-        
+        </div>        
         <div id="canvas-actions">
-          <a href="" class="button">Change Canvas</a>
+          <input type="color" tabindex=-10 class="hidden canvas-picker">
+          <input type="button" id="canvasPicker" class=" canvas-picker light" value="Change Canvas">
           <a href="" class="button">Reset Canvas</a>
-        </div>
-        
-      </div>
-  
-
-  
+        </div>        
+      </div>    
       <div id="modes-container">        
         <form id="modes">
           <h3>Modes</h3>
           <div>
-            <a href="" class="button thin">Color</a> <label for="classic"> Classic </label> 
+            <input type="color" tabindex=-10 class="hidden paint-picker">
+            <input type="button" id="picker" class="button thin paint-picker light" value="Color">
+            <label for="classic"> Classic </label> 
             <input type="radio" id="classic" name="mode" class="mode" checked/>
           </div>
           <div>
@@ -126,11 +85,10 @@
             <input type="radio" id="random" name="mode" class="mode"/>
           </div>
         </form>
-  
       </div>
-  </div>
-  
-
+    </div>  
   </div>
 </body>
 </html>
+
+
