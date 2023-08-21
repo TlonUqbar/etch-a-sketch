@@ -53,17 +53,17 @@
           <!-- <fieldset>
           <legend>Modifiers</legend> -->
           <div>
-            <input type="radio" name="none" checked>
+            <input type="radio" id="none" name="modifier" checked>
             <label for="none">None</label>
           </div>
           <div>
             
-            <input type="radio" name="lighten">
+            <input type="radio" id="lighten" name="modifier">
             <label for="lighten">Lighten</label>
           </div>
           <div>
             
-            <input type="radio" name="darken">
+            <input type="radio" id="darken" name="modifier">
             <label for="darken">Darken</label>
           </div>
         <!-- </fieldset>                       -->
@@ -90,9 +90,9 @@
             </datalist>
           </div>
 
-          <div id="gridlines">
+          <div id="gridlines-control">
             <label for="gridlines">Gridlines</label>
-            <input type="checkbox" name="gridlines" checked/>
+            <input type="checkbox" name="gridlines" id="gridlines" checked/>
           </div>
 
         </div>
@@ -111,19 +111,19 @@
           <h3>Modes</h3>
           <div>
             <a href="" class="button thin">Color</a> <label for="classic"> Classic </label> 
-            <input type="radio" name="classic" checked/>
+            <input type="radio" id="classic" name="mode" class="mode" checked/>
           </div>
           <div>
             <label for="rainbow">Rainbow</label>
-            <input type="radio" name="rainbow"/>
+            <input type="radio" id="rainbow" name="mode" class="mode"/>
           </div>
           <div>
             <label for="grayscale">Grayscale</label>
-            <input type="radio" name="grayscale"/>
+            <input type="radio" id="grayscale" name="mode" class="mode"/>
           </div>
           <div>
             <label for="random">Random</label>
-            <input type="radio" name="random"/>
+            <input type="radio" id="random" name="mode" class="mode"/>
           </div>
         </form>
   
