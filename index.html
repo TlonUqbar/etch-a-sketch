@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch-A-Sketch Doodler</title>
+  <link rel="icon" href="https://fav.farm/%F0%9F%91%BE" /> 
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="outter-container">
+    <div id="title">
+      <span class="diggy">Diggy</span><span class="a">-a-</span><span clas="doddle">Doodle</span>
+    </div>
+    <div id="inner-container">
+      <div id="grid-container">
+        <div class="grid-row">
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+        </div>
+        <div class="grid-row">
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+        </div>
+        <div class="grid-row">
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+        </div>
+        <div class="grid-row">
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+          <div class="row-item"></div>
+        </div>
+      </div>
+      
+    </div>
+    <div id="controls">
+      
+      <div id="modifiers-container">
+        
+        <form id="modifiers">
+          <h3>Modifiers</h3>
+          <!-- <fieldset>
+          <legend>Modifiers</legend> -->
+          <div>
+            <input type="radio" name="none" checked>
+            <label for="none">None</label>
+          </div>
+          <div>
+            
+            <input type="radio" name="lighten">
+            <label for="lighten">Lighten</label>
+          </div>
+          <div>
+            
+            <input type="radio" name="darken">
+            <label for="darken">Darken</label>
+          </div>
+        <!-- </fieldset>                       -->
+        </form>
+      </div>
+
+   
+      <div id="canvas-controls">
+        <h3>Canvas</h3>
+        <div id="grid-control">
+          <label for="slider">Grid size: </label>
+            <output id="grid-val">50x50</output><br/>
+          <input id="slider" type="range" min="1" max="100" value="50" step="1" list="grid-values" autocomplete="off"> 
+          
+          <datalist id="grid-values">
+            <option value="1" label="1"></option>
+            <option value="24" label="24"></option>
+            <option value="50" label="50"></option>
+            <option value="75" label="75"></option>
+            <option value="100" label="100"></option>
+          </datalist>
+        </div>
+        
+        <div id="canvas-actions">
+          <a href="" class="button">Change Canvas</a>
+          <a href="" class="button">Reset Canvas</a>
+        </div>
+      </div>
+  
+
+  
+      <div id="modes-container">        
+        <form id="modes">
+          <h3>Modes</h3>
+          <div>
+            <a href="" class="button thin">Color</a> <label for="classic"> Classic </label> 
+            <input type="radio" name="classic" checked/>
+          </div>
+          <div>
+            <label for="rainbow">Rainbow</label>
+            <input type="radio" name="rainbow"/>
+          </div>
+          <div>
+            <label for="grayscale">Grayscale</label>
+            <input type="radio" name="grayscale"/>
+          </div>
+          <div>
+            <label for="random">Random</label>
+            <input type="radio" name="random"/>
+          </div>
+        </form>
+  
+      </div>
+  </div>
+  
+
+  </div>
+</body>
+</html>
