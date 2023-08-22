@@ -10,8 +10,7 @@ A simulation of an Etch-A-Sketch pad.  This project is part of The Odin Project 
   - [x] Be careful with borders and margins as they can adjust the size of squares
 - [x] Set up "hover" effect so that grid divs change color when your mouse passed over them leaving a pixelated trail
   - [x] Set up event listener for the mouse events
-    - [x] mouse enter event listener
-    - [ ] mouse leave event listener
+    - [x] mouseover event listener
 - [x] Change the color of the div
   - [x] either a class to the div or change the background of the div using JS
 - [x] Add a button to change grid size, number of square not space.
@@ -20,9 +19,11 @@ A simulation of an Etch-A-Sketch pad.  This project is part of The Odin Project 
   - [x] Set a maximum 100 squares grid
 
 ### Bonus Tasks
-- [ ] Choose color instead of just black.
-- [ ] Change the color to a Random RBG color.
-- [ ] Change the color to contiguous RGB color (Rainbow)
+- [x] Choose color instead of just black.
+- [x] Change the color to a Random RBG color.
+- [x] Change the color to contiguous RGB color (Rainbow)
+- [x] Change the color to contiguous RGB color (Grayscale)
+- [x] Add eraser to change color back to canvas color.
 - [ ] Implement a darken and/or lighten effect.
   - [ ] Each interaction +/- 10% color
   - [ ] Make completely black or white in 10 interactions

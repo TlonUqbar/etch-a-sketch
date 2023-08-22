@@ -72,6 +72,8 @@ const toggleGridLines = (e) => {
 
 const classicMode = (div) => ( div.target.style.backgroundColor = paint );
 
+const eraserMode = (div) =>  (div.target.style.backgroundColor = canvas );
+
 const randomMode = (div) => {
   let color = `rgb(${Math.floor(Math.random() * 255) + 1}, ${Math.floor(Math.random() * 255) + 1}, ${Math.floor(Math.random() * 255) + 1})`;
   div.target.style.backgroundColor = color;
@@ -87,6 +89,14 @@ const grayscaleMode = (div) => {
   div.target.style.backgroundColor = grayscale[index++];
 }
 
+const lightenMode = (div) => {
+  console.log("lighten");
+}
+
+const darkenMode = (div) => {
+  console.log("darken");
+}
+
 const colorChange = (div) => { 
   switch (mode){
     case "classic" :
@@ -97,6 +107,12 @@ const colorChange = (div) => {
       return grayscaleMode(div);
     case "random" :
       return randomMode(div);
+    case "eraser" :
+      return eraserMode(div);
+    case "lighten" :
+      return lightenMode(div);
+    case "darken" :
+      return darkenMode(div);
     default:
       break;
   }
@@ -194,6 +210,7 @@ modes.forEach( (m) => {
   m.addEventListener("change", (e) => {
     e.preventDefault();
     e.stopPropagation();
+    console.log(e.target.id);
     mode = e.target.id;
   }) 
 });  
