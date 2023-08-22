@@ -19,6 +19,7 @@ const gridlines = document.querySelector("#gridlines");
 const sliderInput = document.querySelector("#slider-input");
 const sliderOutput = document.querySelector("#grid-size");
 const modes = document.querySelectorAll(".mode");
+const clear = document.querySelector("#clear-canvas");
 
 let gridSize = 50;
 let paint = "rgb(130, 130, 130)";
@@ -51,15 +52,15 @@ const createGrid = (gridSize) => {
   if( document.querySelector(".row-item").classList.contains("gridlines") ){
     document.querySelector("#gridlines").checked = true;
   }
-
 }
 
-const resetGrid = (e) => {
+// clearGrid
+const clearGrid = (e) => {
   e.preventDefault();
   e.stopPropagation();
   canvas = "rgb(30, 41, 59)" ;
   gridItems = [...document.querySelectorAll(".row-item")]
-  gridItems.forEach( (div) => div.style.backgroundColor = '');
+  gridItems.forEach( (div) => div.style.backgroundColor = canvas);
 }
 
 
@@ -90,11 +91,25 @@ const grayscaleMode = (div) => {
 }
 
 const lightenMode = (div) => {
-  console.log("lighten");
+  let red, green, blue, newColor;
+  array = div.target.style.backgroundColor.split("(")[1].split(")")[0];
+  array = array.split(",");
+  red = ( parseInt(array[0])+51 < 255 ) ? parseInt(array[0])+51 : 255;
+  green = ( parseInt(array[1])+51 < 255 ) ? parseInt(array[1])+51 : 255;
+  blue = ( parseInt(array[2])+51 < 255 ) ? parseInt(array[2])+51 : 255;
+  newColor = `rgb(${red}, ${green}, ${blue})`;
+  div.target.style.backgroundColor = newColor;
 }
 
 const darkenMode = (div) => {
-  console.log("darken");
+  let red, green, blue, newColor;
+  array = div.target.style.backgroundColor.split("(")[1].split(")")[0];
+  array = array.split(",");
+  red = ( parseInt(array[0])-51 > 0 ) ?  parseInt(array[0])-51 : 0 ;
+  green = ( parseInt(array[1])-51 > 0 ) ? parseInt(array[1])-51 : 0;
+  blue = ( parseInt(array[2])-51 > 0 ) ? parseInt(array[2])-51 : 0;
+  newColor = `rgb(${red}, ${green}, ${blue})`
+  div.target.style.backgroundColor = newColor;
 }
 
 const colorChange = (div) => { 
@@ -128,29 +143,28 @@ const changeCanvas = (e) => {
     if( div.style.backgroundColor == current ) div.style.backgroundColor = convertHEXtoRGB(e.target.value);
     canvas = convertHEXtoRGB(e.target.value);
   });
-};
+}
 
-function convertRGBtoHEX(string){
-  if(string.startsWith("#")){
-    console.log("string", string);
-    return string;
-  }
-  let array = string.split("(")[1].split(")")[0];
+
+// Helper functions mostly for dealing with colors
+function convertRGBtoHEX(colorString){
+  if(colorString.startsWith("#")) return colorString;  // the string is already a HEX color
+
+  let array = colorString.split("(")[1].split(")")[0];
   array = array.split(",");
 
-  let hex = array.map( (x)=> {
-    x = parseInt(x).toString(16); 
-    return (x.length==1) ? "0"+x : x;
-  });
+  let hex = array.map( (x)=> { x = parseInt(x).toString(16); return (x.length==1) ? "0"+x : x; });
 
   return "#"+hex.join('');
 }
 
-function convertHEXtoRGB(string){ 
-  let rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(string);
+function convertHEXtoRGB(colorString){ 
+  let rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colorString);
   return `rgb(${parseInt(rgb[1], 16)}, ${parseInt(rgb[2], 16)}, ${parseInt(rgb[3], 16)})`;
 }
 
+// This tells me if a color is considered light, then dark color can be used for contrast
+// This is how the "Color" and "Change Canvas" button have either black or white fonts
 function isLightColor(colorString){
   let array = [];
   let answer;
@@ -160,7 +174,6 @@ function isLightColor(colorString){
     array.shift();
     array = array.map( (item) => { return parseInt(item, 16) }); 
   } else{
-    console.log(colorString)
     array = colorString.split("(")[1].split(")")[0];
     array = array.split(",");
   }
@@ -179,11 +192,9 @@ const updateColorButton = (e) => {
     picker.classList.add("light");
     picker.classList.remove("dark");
   }
-
 }
 
 const updateCanvasButton = (e) => {
-  // paint = e.target.value;
   canvasPicker.style.backgroundColor = e.target.value;
   if(isLightColor( e.target.value)){
     canvasPicker.classList.add("dark");
@@ -192,9 +203,12 @@ const updateCanvasButton = (e) => {
     canvasPicker.classList.add("light");
     canvasPicker.classList.remove("dark");
   }
-  changeCanvas(e)
+  changeCanvas(e);
 }
 
+clear.addEventListener("click", clearGrid);
+
+gridlines.addEventListener("change", toggleGridLines);
 
 sliderInput.addEventListener("input", (e) => {
   e.preventDefault();
@@ -203,19 +217,15 @@ sliderInput.addEventListener("input", (e) => {
   gridSize = slider.value;
   sliderOutput.textContent = `${slider.value}x${slider.value}`;
   createGrid(gridSize);
-})
-
+});
 
 modes.forEach( (m) => {
   m.addEventListener("change", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e.target.id);
     mode = e.target.id;
   }) 
 });  
-
-gridlines.addEventListener("change", toggleGridLines);
 
 canvasPicker.addEventListener("click", (e) => {
   const inputs =  e.target.previousElementSibling;

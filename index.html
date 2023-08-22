@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etch-A-Sketch Doodler</title>
-  <link rel="icon" href="https://fav.farm/%F0%9F%91%BE" /> 
+  <link rel="icon" href="https://fav.farm/%F0%9F%8E%A8" /> 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -66,18 +66,12 @@
         <div id="canvas-actions">
           <input type="color" tabindex=-10 class="hidden canvas-picker">
           <input type="button" id="canvasPicker" class=" canvas-picker light" value="Change Canvas">
-          <a href="" class="button">Reset Canvas</a>
+          <input type="button" id="clear-canvas" class="button" value="Clear Canvas" >
         </div>        
       </div>    
       <div id="modes-container">        
         <div class="modes modes-2" autocomplete="off">
           <h3>Modes</h3>
-          <!-- <div>
-            <input type="color" tabindex=-10 class="hidden paint-picker">
-            <input type="button" id="picker" class="button thin paint-picker light" value="Color">
-            <label for="classic"> Classic </label> 
-            <input type="radio" id="classic" name="mode" class="mode" checked/>
-          </div> -->
           <div>
             <label for="rainbow">Rainbow 
               <input type="radio" id="rainbow" name="mode" class="mode"/>
@@ -105,5 +99,3 @@
   </div>
 </body>
 </html>
-
-
