@@ -22,8 +22,12 @@ A simulation of an Etch-A-Sketch pad.  This project is part of The Odin Project 
 - [x] Choose color instead of just black.
 - [x] Change the color to a Random RBG color.
 - [x] Change the color to contiguous RGB color (Rainbow)
+  - [x] Use a function to generate the new color
 - [x] Change the color to contiguous RGB color (Grayscale)
+  - [x] Use a function to generate the scale
 - [x] Add eraser to change color back to canvas color.
-- [ ] Implement a darken and/or lighten effect.
-  - [ ] Each interaction +/- 10% color
-  - [ ] Make completely black or white in 10 interactions
+- [x] Implement a darken and/or lighten effect
+  - [x] Each interaction +/- 10% color
+  - [x] Make completely black or white in 10 interactions
+
+  

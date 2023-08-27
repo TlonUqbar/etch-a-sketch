@@ -9,10 +9,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital@0;1&display=swap');
 
 
-
-
-
-
 :root{
   --base-background: rgba(13, 17, 23, 1);
   --second-background: rgba(19, 23, 33, 1);
@@ -22,12 +18,9 @@
   --base-color: rgb(186, 218, 85);
   --second-color: rgb(226, 162, 79);
   --third-color: #121010;
-
   
   --classic-canvas: rgb(30, 41, 59);
   --classic-color: rgb(130, 130, 130);
-  /* --default-color: rgb(186, 218, 85); */
-  /* --default-canvas: rgb(222, 184, 135); */
 
   --play-border: rgb(222, 184, 135);
   --border-color: rgb(245, 222, 179);
@@ -44,7 +37,6 @@
   --t8: rgb(247, 146, 29);
   --t9: rgb(11, 84, 11);
   
-
   --burlywood: rgb(222, 184, 135);
   --button-action: rgb(233, 222, 39);  
   --list-length: 5;
@@ -134,12 +126,9 @@ h3{
   background-color: var(--third-background);
   justify-content: center;
   align-items: center;
-  /* margin: 50px 0 100px; */
   padding: 1px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  /* margin: auto; */
-  /* align-self: flex-end; */
   flex-basis: 600px;
   height: fit-content;
 }
@@ -158,12 +147,10 @@ h3{
 .grid-row{
   display: flex;
   flex-direction: row;
-  /* background-color: beige; */
   justify-content: center;
   align-items: stretch;
   flex:auto;
   flex-wrap: wrap;
-  
 }
 
 .row-item{
@@ -206,15 +193,16 @@ h3{
 }
 
 #slider-input{
-
+  font-size: 12px;
 }
 
-#grid-values{
-
+#values{
+  font-size: 18px;
 }
 
-#grid-value{
-
+#grid-size{
+  font-size: 18px;
+  padding-left: 10px;
 }
 
 #gridlines{
@@ -330,32 +318,30 @@ h3{
   visibility: hidden;
 }
 
-/* 
-.mode + label:hover {
-  cursor: pointer;
-} */
 
-label:hover   {
+label.lmode:hover, 
+input[type=radio]:hover {
   cursor: pointer;
 }
 
-label:hover > input[type=radio]:hover  {
+
+label ~ input[type=checkbox]:hover{
   cursor: pointer;
 }
-
 
 input[type=button]:hover{
   cursor: pointer;
 }
 
-/* style range */
+
 input[type=range] {
   width: 100%;
   max-width: 100%;
   margin-left: 0;
+  cursor: pointer;
 }
 
-/* style datalist */
+
 input[type=range] + datalist {
   display: flex;
   margin-top: -2px;
@@ -375,3 +361,4 @@ input[type=range] + datalist option:last-child {
   width: calc((100% - 12px) / ((var(--list-length) - 1) * 2) + 6px);
   text-align: right;
 }
+

@@ -1,19 +1,3 @@
-const rainbow = [
-  "#660000", "#990000", "#CC0000", "#FF0000", "#FF3333", "#FF6666", "#FF9999", "#FFCC99", "#FFB266", "#FF9933", "#FF8000", "#CC6600", "#994C00", "#663300", 
-  "#666600", "#999900", "#CCCC00", "#FFFF00", "#FFFF33", "#FFFF66", "#FFFF99", "#CCFF99", "#B2FF66", "#99FF33", "#80FF00", "#66CC00", "#4C9900", "#336600",
-  "#006600", "#009900", "#00CC00", "#00FF00", "#33FF33", "#66FF66", "#99FF99", "#99FFCC", "#66FFB2", "#33FF99", "#00FF80", "#00CC66", "#00994C", "#006633",
-  "#006666", "#009999", "#00CCCC", "#00FFFF", "#33FFFF", "#66FFFF", "#99FFFF", "#99CCFF", "#66B2FF", "#3399FF", "#0080FF", "#0066CC", "#004C99", "#003366", 
-  "#000066", "#000099", "#0000CC", "#0000FF", "#3333FF", "#6666FF", "#9999FF", "#CC99FF", "#B266FF", "#9933FF", "#7F00FF", "#6600CC", "#4C0099", "#330066", 
-  "#660066", "#990099", "#CC00CC", "#FF00FF", "#FF33FF", "#FF66FF", "#FF99FF", "#FF99CC", "#FF66B2", "#FF3399", "#FF007F", "#CC0066", "#99004C", "#660033" 
-]
-
-
-const grayscale = 
-["#000000", "#101010",  "#202020", "#303030", "#404040", "#505050", "#606060", "#707070", "#808080", "#909090", "#A0A0A0", "#B0B0B0", "#C0C0C0", "#D0D0D0", "#E0E0E0", 
- "#FFFFFF", "#E0E0E0", "#D0D0D0", "#C0C0C0", "#B0B0B0", "#A0A0A0", "#909090", "#808080", "#707070", "#606060", "#505050", "#404040", "#303030", "#202020", "#101010", 
-];
-
-
 const grid = document.querySelector("#grid-container");
 const gridlines = document.querySelector("#gridlines");
 const sliderInput = document.querySelector("#slider-input");
@@ -27,6 +11,9 @@ let canvas = "rgb(30, 41, 59)";
 let gridItems = [];
 let index = 0;
 let mode = "classic";
+let rainbowColor = "";
+let grayscaleColor = "";
+let grayscaleDirection = "";
 
 const createGrid = (gridSize) => {
   grid.innerHTML = "";
@@ -81,13 +68,60 @@ const randomMode = (div) => {
 };
 
 const rainbowMode = (div) => {
-  if (index >= rainbow.length) index = 0;
-  div.target.style.backgroundColor = rainbow[index++];
+  let red, green, blue, colorShade;
+
+  if ( rainbowColor == "" ) rainbowColor = "rgb(255,0,0)";
+  array = rainbowColor.split("(")[1].split(")")[0];
+  array = array.split(",");
+  red = parseInt(array[0]);
+  green = parseInt(array[1]);
+  blue = parseInt(array[2]);
+
+  if( red == 255 && blue == 0 && green < 255 ) colorShade = "mostlyRed";
+  if( green == 255 && blue == 0 && red > 0) colorShade = "mostlyYellow";
+  if( green == 255 && red == 0 && blue < 255) colorShade = "mostlyGreen";
+  if( blue == 255 && red == 0 && green > 0 ) colorShade = "mostlyCyan";
+  if( blue == 255 && green == 0 && red < 255 )  colorShade = "mostlyBlue";
+  if( red == 255 && green == 0 && blue > 0) colorShade = "mostlyPurple"
+
+  switch (colorShade) {
+    case "mostlyRed" : green = ( green + 26 < 255) ? green + 26 : 255; break;
+    case "mostlyYellow" : red = ( red - 26 > 0) ? red - 26 : 0; break;
+    case "mostlyGreen" : blue = ( blue + 26 < 255) ? blue + 26 : 255; break;
+    case "mostlyCyan" : green = ( green - 26 > 0) ? green - 26 : 0; break;
+    case "mostlyBlue" : red = ( red + 26 < 255) ? red + 26 : 255; break;
+    case "mostlyPurple" : blue = ( blue - 26 > 0) ? blue - 26 : 0; break;
+    default : break;
+  }
+
+  rainbowColor = `rgb(${red}, ${green}, ${blue})`;
+  div.target.style.backgroundColor = rainbowColor;
 };
 
 const grayscaleMode = (div) => {
-  if (index >= grayscale.length) index = 0;
-  div.target.style.backgroundColor = grayscale[index++];
+  let red, green, blue, grayShade, direction;
+
+  if( grayscaleColor == "" ) grayscaleColor = "rgb(0,0,0)";
+  if( grayscaleDirection == "" ) grayscaleDirection = "up"; 
+  array = grayscaleColor.split("(")[1].split(")")[0];
+  array = array.split(",");
+  red = parseInt(array[0]);
+  green = parseInt(array[1]);
+  blue = parseInt(array[2]);
+
+  if( grayscaleDirection == "up" ){
+    red = (red + 13 < 255) ? red + 13 : 255; 
+    green = (green + 13 < 255) ? green + 13 : 255;
+    blue = (blue + 13 < 255 ) ? blue + 13 : 255;
+    if(red == 255 && green == 255 && blue == 255 ) grayscaleDirection = "down";
+  }else if(grayscaleDirection == "down"){
+    red = (red - 13 > 0) ? red - 13 : 0; 
+    green = (green - 13 > 0) ? green - 13 : 0;
+    blue = (blue - 13 > 0 ) ? blue - 13 : 0;
+    if(red == 0 && green == 0 && blue == 0 ) grayscaleDirection = "up";
+  }
+  grayscaleColor = `rgb(${red}, ${green}, ${blue})`;
+  div.target.style.backgroundColor = grayscaleColor;
 }
 
 const lightenMode = (div) => {
@@ -235,7 +269,6 @@ canvasPicker.addEventListener("click", (e) => {
   } catch (e) {
     console.log(e);
   }
-  
 });
 
 picker.addEventListener("click", (e) => {
