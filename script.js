@@ -69,6 +69,7 @@ const randomMode = (div) => {
 
 const rainbowMode = (div) => {
   let red, green, blue, colorShade;
+  const delta = 26;  // this is about 10%
 
   if ( rainbowColor == "" ) rainbowColor = "rgb(255,0,0)";
   array = rainbowColor.split("(")[1].split(")")[0];
@@ -85,12 +86,12 @@ const rainbowMode = (div) => {
   if( red == 255 && green == 0 && blue > 0) colorShade = "mostlyPurple"
 
   switch (colorShade) {
-    case "mostlyRed" : green = ( green + 26 < 255) ? green + 26 : 255; break;
-    case "mostlyYellow" : red = ( red - 26 > 0) ? red - 26 : 0; break;
-    case "mostlyGreen" : blue = ( blue + 26 < 255) ? blue + 26 : 255; break;
-    case "mostlyCyan" : green = ( green - 26 > 0) ? green - 26 : 0; break;
-    case "mostlyBlue" : red = ( red + 26 < 255) ? red + 26 : 255; break;
-    case "mostlyPurple" : blue = ( blue - 26 > 0) ? blue - 26 : 0; break;
+    case "mostlyRed" : green = ( green + delta < 255) ? green + delta : 255; break;
+    case "mostlyYellow" : red = ( red - delta > 0) ? red - delta : 0; break;
+    case "mostlyGreen" : blue = ( blue + delta < 255) ? blue + delta : 255; break;
+    case "mostlyCyan" : green = ( green - delta > 0) ? green - delta : 0; break;
+    case "mostlyBlue" : red = ( red + delta < 255) ? red + delta : 255; break;
+    case "mostlyPurple" : blue = ( blue - delta > 0) ? blue - delta : 0; break;
     default : break;
   }
 
@@ -100,6 +101,7 @@ const rainbowMode = (div) => {
 
 const grayscaleMode = (div) => {
   let red, green, blue, grayShade, direction;
+  const delta = 13;  // the is about 5%
 
   if( grayscaleColor == "" ) grayscaleColor = "rgb(0,0,0)";
   if( grayscaleDirection == "" ) grayscaleDirection = "up"; 
@@ -110,14 +112,14 @@ const grayscaleMode = (div) => {
   blue = parseInt(array[2]);
 
   if( grayscaleDirection == "up" ){
-    red = (red + 13 < 255) ? red + 13 : 255; 
-    green = (green + 13 < 255) ? green + 13 : 255;
-    blue = (blue + 13 < 255 ) ? blue + 13 : 255;
+    red = (red + delta < 255) ? red + delta : 255; 
+    green = (green + delta < 255) ? green + delta : 255;
+    blue = (blue + delta < 255 ) ? blue + delta : 255;
     if(red == 255 && green == 255 && blue == 255 ) grayscaleDirection = "down";
   }else if(grayscaleDirection == "down"){
-    red = (red - 13 > 0) ? red - 13 : 0; 
-    green = (green - 13 > 0) ? green - 13 : 0;
-    blue = (blue - 13 > 0 ) ? blue - 13 : 0;
+    red = (red - delta > 0) ? red - delta : 0; 
+    green = (green - delta > 0) ? green - delta : 0;
+    blue = (blue - delta > 0 ) ? blue - delta : 0;
     if(red == 0 && green == 0 && blue == 0 ) grayscaleDirection = "up";
   }
   grayscaleColor = `rgb(${red}, ${green}, ${blue})`;
